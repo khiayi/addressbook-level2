@@ -46,6 +46,9 @@ public class AddCommand extends Command {
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
         }
+
+        name = toCorrectCase(name);
+
         this.toAdd = new Person(
                 new Name(name),
                 new Phone(phone, isPhonePrivate),
@@ -54,6 +57,27 @@ public class AddCommand extends Command {
                 new UniqueTagList(tagSet)
         );
     }
+
+    public String toCorrectCase(String name) {
+
+        StringBuilder result = new StringBuilder();
+        boolean toCapitalise = true;
+        for(char c : name.toCharArray()) {
+            if (toCapitalise) {
+                result.append(Character.toUpperCase(c));
+                if (!Character.isWhitespace(c)) {
+                    toCapitalise = false;
+                }
+            } else {
+                result.append(Character.toLowerCase(c));
+                if (Character.isWhitespace(c)) {
+                    toCapitalise = true;
+                }
+            }
+        }
+        return result.toString();
+    }
+
 
     public AddCommand(Person toAdd) {
         this.toAdd = toAdd;

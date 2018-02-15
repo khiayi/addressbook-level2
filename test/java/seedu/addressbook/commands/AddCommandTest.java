@@ -97,7 +97,7 @@ public class AddCommandTest {
 
     @Test
     public void addCommand_validData_correctlyConstructed() throws Exception {
-        AddCommand command = new AddCommand(Name.EXAMPLE, Phone.EXAMPLE, true, Email.EXAMPLE, false,
+        AddCommand command = new AddCommand("jOhn dOe", Phone.EXAMPLE, true, Email.EXAMPLE, false,
                 Address.EXAMPLE, true, EMPTY_STRING_LIST);
         ReadOnlyPerson p = command.getPerson();
 
