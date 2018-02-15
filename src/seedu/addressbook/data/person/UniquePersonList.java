@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import seedu.addressbook.common.Utils;
+import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.exception.DuplicateDataException;
 
 
@@ -24,7 +25,7 @@ public class UniquePersonList implements Iterable<Person> {
      * Signals that an operation would have violated the 'no duplicates' property of the list.
      */
     public static class DuplicatePersonException extends DuplicateDataException {
-        protected DuplicatePersonException() {
+         protected DuplicatePersonException() {
             super("Operation would result in duplicate persons");
         }
     }
@@ -129,6 +130,9 @@ public class UniquePersonList implements Iterable<Person> {
         internalList.clear();
     }
 
+    public void sort() { ;
+        internalList.sort((person1, person2) -> (person1.getName().fullName.compareTo(person2.getName().fullName)));
+    }
     @Override
     public Iterator<Person> iterator() {
         return internalList.iterator();

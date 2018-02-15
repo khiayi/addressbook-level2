@@ -4,7 +4,6 @@ import seedu.addressbook.data.person.ReadOnlyPerson;
 
 import java.util.List;
 
-
 /**
  * Lists all persons in the address book to the user.
  */
@@ -16,10 +15,12 @@ public class SortCommand extends Command {
             + ": Sorts and displays all persons in the address book as a list with index numbers.\n"
             + "Example: " + COMMAND_WORD;
 
+    public static final String MESSAGE_SUCCESS = "Sorted address book";
 
     @Override
     public CommandResult execute() {
+        addressBook.sort();
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
-        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
+        return new CommandResult(MESSAGE_SUCCESS, allPersons);
     }
 }

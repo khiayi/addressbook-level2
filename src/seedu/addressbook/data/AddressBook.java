@@ -1,9 +1,6 @@
 package seedu.addressbook.data;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
@@ -106,7 +103,10 @@ public class AddressBook {
         allPersons.clear();
         allTags.clear();
     }
+    public void sort(){
+        allPersons.sort();
 
+    }
     /**
      * Returns a new UniquePersonList of all persons in the address book at the time of the call.
      */
